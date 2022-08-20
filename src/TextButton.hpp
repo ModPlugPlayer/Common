@@ -1,5 +1,5 @@
 /*
-PlayerButton class definitions of ModPlug Player Common Library
+TextButton class declarations of ModPlug Player Common Library
 Copyright (C) 2020 Volkan Orhan
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -9,28 +9,21 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "PlayerButton.hpp"
+#pragma once
+#include <RGB.hpp>
 
-void PlayerButton::setBackgroundColor(const RGB & color) {
-    backgroundColor = color;
-}
+class TextButton {
+public:
+    virtual void setBackgroundColor(const RGB &color);
+    virtual void setTextColor(const RGB &color);
+    RGB getBackgroundColor() const;
+    RGB getTextColor() const;
+    const QString & getStyleSheetTemplate() const;
+    void setStyleSheetTemplate(const QString & styleSheetTemplate);
 
-void PlayerButton::setTextColor(const RGB & color) {
-    textColor = color;
-}
-
-RGB PlayerButton::getBackgroundColor() const {
-    return backgroundColor;
-}
-
-RGB PlayerButton::getTextColor() const {
-    return textColor;
-}
-
-const QString & PlayerButton::getStyleSheetTemplate() const {
-    return styleSheetTemplate;
-}
-
-void PlayerButton::setStyleSheetTemplate(const QString & styleSheetTemplate) {
-    this->styleSheetTemplate = styleSheetTemplate;
-}
+protected:
+    RGB backgroundColor;
+    RGB textColor;
+    QString styleSheetTemplate;
+    virtual void refreshStyleSheet() = 0;
+};

@@ -10,9 +10,9 @@ You should have received a copy of the GNU General Public License along with thi
 */
 
 #pragma once
-#include "PlayerButton.hpp"
+#include "TextButton.hpp"
 
-class LedButton : public PlayerButton {
+class LedButton : public TextButton {
 public:
     virtual void setActiveButtonLightColor(const RGB &color);
     virtual void setInactiveButtonLightColor(const RGB &color);
