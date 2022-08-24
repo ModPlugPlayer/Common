@@ -12,7 +12,7 @@ You should have received a copy of the GNU General Public License along with thi
 #ifndef SVGICON_HPP
 #define SVGICON_HPP
 #include <QString>
-#include <SVGIconEngine.hpp>
+#include "SVGIconEngine.hpp"
 #include <RGB.hpp>
 #include <QIcon>
 #include <QObject>
