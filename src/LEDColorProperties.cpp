@@ -9,20 +9,32 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "LedButton.hpp"
+#include "LEDColorProperties.hpp"
 
-void LedButton::setActiveButtonLightColor(const RGB & color) {
-    activeButtonLightColor = color;
+void LEDColorProperties::setActiveLEDColor(const RGB & color) {
+    activeLEDColor = color;
+    refreshStyleSheet();
 }
 
-void LedButton::setInactiveButtonLightColor(const RGB & color) {
-    inactiveButtonLightColor = color;
+void LEDColorProperties::setInactiveLEDColor(const RGB & color) {
+    inactiveLEDColor = color;
+    refreshStyleSheet();
 }
 
-RGB LedButton::getActiveButtonLightColor() const {
-    return activeButtonLightColor;
+RGB LEDColorProperties::getActiveLEDColor() const {
+    return activeLEDColor;
 }
 
-RGB LedButton::getInactiveButtonLightColor() const {
-    return inactiveButtonLightColor;
+RGB LEDColorProperties::getInactiveLEDColor() const {
+    return inactiveLEDColor;
+}
+
+const RGB &LEDColorProperties::getLEDBorderColor() const
+{
+    return ledBorderColor;
+}
+
+void LEDColorProperties::setLEDBorderColor(const RGB &ledBorderColor)
+{
+    this->ledBorderColor = ledBorderColor;
 }

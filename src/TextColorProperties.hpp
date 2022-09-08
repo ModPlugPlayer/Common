@@ -11,11 +11,12 @@ You should have received a copy of the GNU General Public License along with thi
 
 #pragma once
 #include "RGB.hpp"
+#include <QPushButton>
 
-class TextButton {
+class TextColorProperties {
 public:
-    virtual void setBackgroundColor(const RGB &color);
-    virtual void setTextColor(const RGB &color);
+    void setBackgroundColor(const RGB &color);
+    void setTextColor(const RGB &color);
     RGB getBackgroundColor() const;
     RGB getTextColor() const;
     const QString & getStyleSheetTemplate() const;

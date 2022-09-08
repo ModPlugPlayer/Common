@@ -10,15 +10,26 @@ You should have received a copy of the GNU General Public License along with thi
 */
 
 #pragma once
-#include "TextButton.hpp"
+#include "LEDColorProperties.hpp"
+#include "TextColorProperties.hpp"
+#include "SVGIcon.hpp"
+#include <QPushButton>
 
-class LedButton : public TextButton {
+class SVGLEDButton : public QPushButton, public LEDColorProperties, public TextColorProperties {
+    Q_OBJECT
 public:
-    virtual void setActiveButtonLightColor(const RGB &color);
-    virtual void setInactiveButtonLightColor(const RGB &color);
-    RGB getActiveButtonLightColor() const;
-    RGB getInactiveButtonLightColor() const;
+    SVGLEDButton(QWidget *parent = nullptr);
+    void setSVGIcon(SVGIcon * svgIcon);
+    void setLocked(bool lock);
+    void lock();
+    void unlock();
+    bool isLocked();
+    SVGIcon * getSVGIcon() const;
 protected:
-    RGB activeButtonLightColor;
-    RGB inactiveButtonLightColor;
+    SVGIcon * svgIcon = nullptr;
+    bool locked = false;
+    void refreshStyleSheet() override;
+protected slots:
+    void pressed();
+    void released();
 };

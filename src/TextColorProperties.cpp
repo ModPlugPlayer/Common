@@ -9,28 +9,30 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "TextButton.hpp"
+#include "TextColorProperties.hpp"
 
-void TextButton::setBackgroundColor(const RGB & color) {
+void TextColorProperties::setBackgroundColor(const RGB & color) {
     backgroundColor = color;
+    refreshStyleSheet();
 }
 
-void TextButton::setTextColor(const RGB & color) {
+void TextColorProperties::setTextColor(const RGB & color) {
     textColor = color;
+    refreshStyleSheet();
 }
 
-RGB TextButton::getBackgroundColor() const {
+RGB TextColorProperties::getBackgroundColor() const {
     return backgroundColor;
 }
 
-RGB TextButton::getTextColor() const {
+RGB TextColorProperties::getTextColor() const {
     return textColor;
 }
 
-const QString & TextButton::getStyleSheetTemplate() const {
+const QString & TextColorProperties::getStyleSheetTemplate() const {
     return styleSheetTemplate;
 }
 
-void TextButton::setStyleSheetTemplate(const QString & styleSheetTemplate) {
+void TextColorProperties::setStyleSheetTemplate(const QString & styleSheetTemplate) {
     this->styleSheetTemplate = styleSheetTemplate;
 }

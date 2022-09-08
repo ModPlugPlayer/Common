@@ -40,7 +40,9 @@ public:
     inline friend std::ostream & operator << (std::ostream &out, const RGB &rgb);
     inline friend std::istream & operator >> (std::istream &in,  RGB &rgb);
     #ifdef QT_CORE_LIB
+    QColor qtColor;
     inline RGB(const QColor &color);
+    inline QColor & qColor();
     inline friend QDataStream &operator<<(QDataStream &out, const RGB &rgb);
     inline friend QDataStream &operator>>(QDataStream &in, RGB &rgb);
     #endif
@@ -71,6 +73,7 @@ QDataStream & operator>>(QDataStream &in, RGB &rgb) {
     //QString string(buffer);
 
     rgb.parseFromHex(string.toStdString());
+    rgb.init();
     qDebug()<<"Operator >> "<<rgb.hex().c_str();
 
     return in;
@@ -83,6 +86,7 @@ Q_DECLARE_METATYPE(RGB);
 
 inline void RGB::init() {
 #ifdef QT_CORE_LIB
+    qtColor = QColor(red, green, blue);
    // qRegisterMetaTypeStreamOperators<RGB>("RGB");
 #endif
 }
@@ -125,6 +129,11 @@ inline RGB::RGB(const QColor &color){
     red = r;
     green = g;
     blue = b;
+    init();
+}
+
+inline QColor & RGB::qColor() {
+    return qtColor;
 }
 #endif
 
