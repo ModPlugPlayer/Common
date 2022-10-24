@@ -24,10 +24,10 @@ class SVGIcon : public QObject
 		SVGIcon(const QString &svgData, const QString &svgColor);
 		void setActiveColor(const RGB &color);
 		void setInactiveColor(const RGB &color);
-		RGB getActiveColor();
-		RGB getInactiveColor();
-		QIcon & getActiveIcon();
-		QIcon & getInactiveIcon();
+        const RGB getActiveColor() const;
+        const RGB getInactiveColor() const;
+        const QIcon & getActiveIcon() const;
+        const QIcon & getInactiveIcon() const;
 	private:
 		QString svgData, svgDataActive, svgDataInactive, svgColor;
 		RGB activeColor, inactiveColor;

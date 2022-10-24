@@ -13,8 +13,12 @@ You should have received a copy of the GNU General Public License along with thi
 
 SVGIcon::SVGIcon(const QString &svgData, const QString &svgColor){
 	this->svgData = svgData;
+    svgDataActive = svgData;
+    svgDataInactive = svgData;
 	this->svgColor = svgColor;
-	activeIcon = QIcon(&engineActiveIcon);
+    engineActiveIcon.setSVGData(svgDataActive);
+    engineInactiveIcon.setSVGData(svgDataInactive);
+    activeIcon = QIcon(&engineActiveIcon);
 	inactiveIcon = QIcon(&engineInactiveIcon);
 }
 
@@ -23,7 +27,7 @@ void SVGIcon::setActiveColor(const RGB &color){
 	svgDataActive = svgData;
 	svgDataActive = svgDataActive.replace(svgColor, color.hex().c_str());
 	engineActiveIcon.setSVGData(svgDataActive);
-	//activeIcon = QIcon(&engineActiveIcon);
+    activeIcon = QIcon(&engineActiveIcon);
 }
 
 void SVGIcon::setInactiveColor(const RGB &color){
@@ -31,21 +35,21 @@ void SVGIcon::setInactiveColor(const RGB &color){
 	svgDataInactive = svgData;
 	svgDataInactive = svgDataInactive.replace(svgColor, color.hex().c_str());
 	engineInactiveIcon.setSVGData(svgDataInactive);
-	//inactiveIcon = QIcon(&engineInactiveIcon);
+    inactiveIcon = QIcon(&engineInactiveIcon);
 }
 
-RGB SVGIcon::getActiveColor(){
+const RGB SVGIcon::getActiveColor() const {
 	return activeColor;
 }
 
-RGB SVGIcon::getInactiveColor(){
+const RGB SVGIcon::getInactiveColor() const {
 	return inactiveColor;
 }
 
-QIcon & SVGIcon::getActiveIcon(){
+const QIcon & SVGIcon::getActiveIcon() const {
 	return activeIcon;
 }
 
-QIcon & SVGIcon::getInactiveIcon(){
+const QIcon & SVGIcon::getInactiveIcon() const {
 	return inactiveIcon;
 }
