@@ -16,26 +16,26 @@ SVGIcon::SVGIcon(const QString &svgData, const QString &svgColor){
     svgDataActive = svgData;
     svgDataInactive = svgData;
 	this->svgColor = svgColor;
-    engineActiveIcon.setSVGData(svgDataActive);
-    engineInactiveIcon.setSVGData(svgDataInactive);
-    activeIcon = QIcon(&engineActiveIcon);
-	inactiveIcon = QIcon(&engineInactiveIcon);
+    engineActiveIcon = new SVGIconEngine();
+    engineInactiveIcon = new SVGIconEngine();
+    engineActiveIcon->setSVGData(svgDataActive);
+    engineInactiveIcon->setSVGData(svgDataInactive);
+    activeIcon = QIcon(engineActiveIcon);
+    inactiveIcon = QIcon(engineInactiveIcon);
 }
 
 void SVGIcon::setActiveColor(const RGB &color){
 	this->activeColor = color;
 	svgDataActive = svgData;
 	svgDataActive = svgDataActive.replace(svgColor, color.hex().c_str());
-	engineActiveIcon.setSVGData(svgDataActive);
-    activeIcon = QIcon(&engineActiveIcon);
+    engineActiveIcon->setSVGData(svgDataActive);
 }
 
 void SVGIcon::setInactiveColor(const RGB &color){
 	this->inactiveColor = color;
 	svgDataInactive = svgData;
 	svgDataInactive = svgDataInactive.replace(svgColor, color.hex().c_str());
-	engineInactiveIcon.setSVGData(svgDataInactive);
-    inactiveIcon = QIcon(&engineInactiveIcon);
+    engineInactiveIcon->setSVGData(svgDataInactive);
 }
 
 const RGB SVGIcon::getActiveColor() const {

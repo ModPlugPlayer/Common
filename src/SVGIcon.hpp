@@ -9,8 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef SVGICON_HPP
-#define SVGICON_HPP
+#pragma once
 #include <QString>
 #include "SVGIconEngine.hpp"
 #include <RGB.hpp>
@@ -31,8 +30,6 @@ class SVGIcon : public QObject
 	private:
 		QString svgData, svgDataActive, svgDataInactive, svgColor;
 		RGB activeColor, inactiveColor;
-		QIcon activeIcon, inactiveIcon;
-		SVGIconEngine engineInactiveIcon, engineActiveIcon;
+        QIcon activeIcon, inactiveIcon;
+        SVGIconEngine *engineInactiveIcon, *engineActiveIcon; //Don't delete engines, they are deleted by QIcons
 };
-
-#endif // SVGICON_HPP
