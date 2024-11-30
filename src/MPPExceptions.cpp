@@ -13,18 +13,17 @@ You should have received a copy of the GNU General Public License along with thi
 #include "MPPExceptions.hpp"
 #include <sstream>
 
-ModPlugPlayer::FileNotFoundException::FileNotFoundException(const std::filesystem::path & filePath)
+ModPlugPlayer::Exceptions::FileNotFoundException::FileNotFoundException(const std::filesystem::path & filePath)
 {
     this->filePath = filePath;
-
 }
 
-std::filesystem::path ModPlugPlayer::FileNotFoundException::getPath() {
+std::filesystem::path ModPlugPlayer::Exceptions::FileNotFoundException::getPath() {
     return filePath;
 }
 
-const char * ModPlugPlayer::FileNotFoundException::what() {
+const std::string ModPlugPlayer::Exceptions::FileNotFoundException::what() {
     std::stringstream ss;
     ss<< "File " << filePath.filename() << "could not be found,";
-    return ss.str().c_str();
+    return ss.str();
 }

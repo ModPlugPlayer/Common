@@ -14,20 +14,27 @@ You should have received a copy of the GNU General Public License along with thi
 #include <filesystem>
 
 namespace ModPlugPlayer {
+    namespace Exceptions {
+        class ModPlugPlayerException: public std::exception{
 
-    class ModPlugPlayerException: public std::exception{
+        };
 
-    };
+        class FileNotFoundException : public ModPlugPlayerException {
+        public:
+            FileNotFoundException(const std::filesystem::path &filePath);
+            std::filesystem::path getPath();
+            const std::string what();
+        private:
+            std::filesystem::path filePath;
+        };
 
-    class FileNotFoundException : public ModPlugPlayerException {
-    public:
-        FileNotFoundException(const std::filesystem::path &filePath);
-        std::filesystem::path getPath();
-        const char * what();
-    private:
-        std::filesystem::path filePath;
-    };
+        class UnsupportedFileFormatException : public ModPlugPlayerException {
+        };
 
-    class UnsupportedFileFormatException : public ModPlugPlayerException {
-    };
+        class OutOfMemoryException : public ModPlugPlayerException {
+        };
+
+        class UnknownErrorException : public ModPlugPlayerException {
+        };
+    }
 }
