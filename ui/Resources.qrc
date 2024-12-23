@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>Graphics/Raster/VolumeControlLine.png</file>
+        <file>Fonts/BodoniXT.ttf</file>
         <file>Fonts/Seven Segment.ttf</file>
         <file>Fonts/Inter.ttf</file>
         <file>Graphics/Raster/VolumeControlBg.png</file>
