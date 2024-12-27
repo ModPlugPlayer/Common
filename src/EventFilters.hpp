@@ -15,33 +15,52 @@ You should have received a copy of the GNU General Public License along with thi
 #include <QPoint>
 #include <QMainWindow>
 
-class MoveByMouseClickEventFilter : public QObject
-{
-	Q_OBJECT
-	public:
-		MoveByMouseClickEventFilter(QMainWindow *mainWindow);
-		bool eventFilter(QObject *watched, QEvent *event);
-        bool getSnapToViewPort() const;
-        void setSnapToViewPort(bool snapToViewPort);
-        int getSnappingThreshold() const;
-        void setSnappingThreshold(int snappingThreshold);
-        bool getKeepStayingInViewPort() const;
-        void setKeepStayingInViewPort(bool keepStayingInViewPort);
+namespace ModPlugPlayer::EventFilters {
+    class MoveByMouseClickEventFilter : public QObject
+    {
+        Q_OBJECT
+        public:
+            MoveByMouseClickEventFilter(QMainWindow *mainWindow);
+            bool eventFilter(QObject *watched, QEvent *event);
+            bool getSnapToViewPort() const;
+            void setSnapToViewPort(bool snapToViewPort);
+            int getSnappingThreshold() const;
+            void setSnappingThreshold(int snappingThreshold);
+            bool getKeepStayingInViewPort() const;
+            void setKeepStayingInViewPort(bool keepStayingInViewPort);
 
+        private:
+            QMainWindow *mainWindow;
+            QPoint dragPosition;
+            QPoint lastPosition;
+            int snappingThreshold = 35;
+            bool snapToViewPort = true;
+            bool keepStayingInViewPort = true;
+    };
+
+    class KeepFixedSizeEventFilter : public QObject
+    {
+        Q_OBJECT
+        public:
+            bool eventFilter(QObject *watched, QEvent *event);
+        private:
+            QMainWindow *mainWindow;
+    };
+
+    class ScrollBarVisibilityEventFilter : public QObject
+    {
+        Q_OBJECT
+    public:
+        bool eventFilter(QObject *scrollBar, QEvent *event);
+        template <typename Func> void setSignal(const typename QtPrivate::FunctionPointer<Func>::Object *sender, Func signal);
+    signals:
+        void scrollBarVisibilityChanged(bool visible);
     private:
-		QMainWindow *mainWindow;
-		QPoint dragPosition;
-        QPoint lastPosition;
-        int snappingThreshold = 35;
-        bool snapToViewPort = true;
-        bool keepStayingInViewPort = true;
-};
+        QWidget *widget;
+    };
+}
 
-class KeepFixedSizeEventFilter : public QObject
-{
-	Q_OBJECT
-	public:
-		bool eventFilter(QObject *watched, QEvent *event);
-	private:
-		QMainWindow *mainWindow;
-};
+template<typename Func>
+void ModPlugPlayer::EventFilters::ScrollBarVisibilityEventFilter::setSignal(const QtPrivate::FunctionPointer<Func>::Object *sender, Func signal) {
+    connect(this, &ScrollBarVisibilityEventFilter::scrollBarVisibilityChanged, sender, signal);
+}

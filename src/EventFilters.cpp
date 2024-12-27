@@ -15,17 +15,14 @@ You should have received a copy of the GNU General Public License along with thi
 #include "MacManager.h"
 #endif
 
-MoveByMouseClickEventFilter::MoveByMouseClickEventFilter(QMainWindow *mainWindow)
-{
+ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::MoveByMouseClickEventFilter(QMainWindow *mainWindow) {
 	this->mainWindow = mainWindow;
 }
 
-bool MoveByMouseClickEventFilter::eventFilter(QObject * watched, QEvent * event)
-{
+bool ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::eventFilter(QObject * watched, QEvent * event) {
     if (event->type() == QEvent::MouseButtonPress) {
         QMouseEvent* mouse_event = dynamic_cast<QMouseEvent*>(event);
-        if (mouse_event->button() == Qt::LeftButton)
-        {
+        if (mouse_event->button() == Qt::LeftButton) {
             dragPosition = mouse_event->globalPosition().toPoint() - mainWindow->geometry().topLeft();
             lastPosition = dragPosition;
             qDebug()<<"Drag Pos: "<<dragPosition;
@@ -87,38 +84,31 @@ bool MoveByMouseClickEventFilter::eventFilter(QObject * watched, QEvent * event)
     return false;
 }
 
-bool MoveByMouseClickEventFilter::getSnapToViewPort() const
-{
+bool ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::getSnapToViewPort() const {
     return snapToViewPort;
 }
 
-void MoveByMouseClickEventFilter::setSnapToViewPort(bool snapToViewPort)
-{
+void ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::setSnapToViewPort(bool snapToViewPort) {
     this->snapToViewPort = snapToViewPort;
 }
 
-int MoveByMouseClickEventFilter::getSnappingThreshold() const
-{
+int ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::getSnappingThreshold() const {
     return snappingThreshold;
 }
 
-void MoveByMouseClickEventFilter::setSnappingThreshold(int snappingThreshold)
-{
+void ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::setSnappingThreshold(int snappingThreshold) {
     this->snappingThreshold = snappingThreshold;
 }
 
-bool MoveByMouseClickEventFilter::getKeepStayingInViewPort() const
-{
+bool ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::getKeepStayingInViewPort() const {
     return keepStayingInViewPort;
 }
 
-void MoveByMouseClickEventFilter::setKeepStayingInViewPort(bool keepStayingInViewPort)
-{
+void ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::setKeepStayingInViewPort(bool keepStayingInViewPort) {
     this->keepStayingInViewPort = keepStayingInViewPort;
 }
 
-bool KeepFixedSizeEventFilter::eventFilter(QObject *watched, QEvent *event)
-{
+bool ModPlugPlayer::EventFilters::KeepFixedSizeEventFilter::eventFilter(QObject *watched, QEvent *event) {
     if(event->type() == QEvent::LayoutRequest) {
         mainWindow->setFixedSize(mainWindow->sizeHint());
 #ifdef Q_OS_MACOS
@@ -129,3 +119,12 @@ bool KeepFixedSizeEventFilter::eventFilter(QObject *watched, QEvent *event)
     return false;
 }
 
+bool ModPlugPlayer::EventFilters::ScrollBarVisibilityEventFilter::eventFilter(QObject *scrollBar, QEvent *event) {
+    if(event->type() == QEvent::Show) {
+        emit scrollBarVisibilityChanged(true);
+    }
+    else if(event->type() == QEvent::Hide) {
+        emit scrollBarVisibilityChanged(false);
+    }
+    return false;
+}
