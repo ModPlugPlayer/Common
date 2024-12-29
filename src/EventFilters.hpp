@@ -58,9 +58,26 @@ namespace ModPlugPlayer::EventFilters {
     private:
         QWidget *widget;
     };
+
+    class MouseWheelEventFilter : public QObject
+    {
+        Q_OBJECT
+    public:
+        bool eventFilter(QObject *watched, QEvent *event);
+        template <typename Func> void setSignal(const typename QtPrivate::FunctionPointer<Func>::Object *sender, Func signal);
+    signals:
+        void mouseWheelEvent(QPoint angleDelta, bool inverted);
+    private:
+        QWidget *widget;
+    };
 }
 
 template<typename Func>
 void ModPlugPlayer::EventFilters::ScrollBarVisibilityEventFilter::setSignal(const QtPrivate::FunctionPointer<Func>::Object *sender, Func signal) {
     connect(this, &ScrollBarVisibilityEventFilter::scrollBarVisibilityChanged, sender, signal);
+}
+
+template<typename Func>
+void ModPlugPlayer::EventFilters::MouseWheelEventFilter::setSignal(const QtPrivate::FunctionPointer<Func>::Object *sender, Func signal) {
+    connect(this, &MouseWheelEventFilter::mouseWheelEvent, sender, signal);
 }

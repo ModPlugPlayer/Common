@@ -128,3 +128,13 @@ bool ModPlugPlayer::EventFilters::ScrollBarVisibilityEventFilter::eventFilter(QO
     }
     return false;
 }
+
+bool ModPlugPlayer::EventFilters::MouseWheelEventFilter::eventFilter(QObject *watched, QEvent *event) {
+    if (event->type() == QEvent::Wheel) {
+        QWheelEvent *wheelEvent = (QWheelEvent *) event;
+        wheelEvent->inverted();
+        emit mouseWheelEvent(wheelEvent->angleDelta(), wheelEvent->isInverted());
+        return true;
+    }
+    return QObject::eventFilter(watched, event);
+}
