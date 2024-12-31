@@ -10,10 +10,11 @@ You should have received a copy of the GNU General Public License along with thi
 */
 
 #pragma once
-#include <QDialog>
-#include <QMainWindow>
-#include <QLabel>
+
+#include <filesystem>
+#include <string>
 
 namespace FileUtil {
-
+    std::string filePath2FileURI(const std::filesystem::path &filePath);
+    std::filesystem::path fileURI2FilePath(const std::string &fileURI);
 }
