@@ -26,3 +26,14 @@ const std::string ModPlugPlayer::Exceptions::FileNotFoundException::what() {
     ss<< "File " << filePath.filename() << "could not be found,";
     return ss.str();
 }
+
+const std::string ModPlugPlayer::Exceptions::ModPlugPlayerException::what() {
+    return message;
+}
+
+ModPlugPlayer::Exceptions::ModPlugPlayerException::ModPlugPlayerException() {
+}
+
+ModPlugPlayer::Exceptions::ModPlugPlayerException::ModPlugPlayerException(std::string message) {
+    this->message = message;
+}

@@ -16,14 +16,19 @@ You should have received a copy of the GNU General Public License along with thi
 namespace ModPlugPlayer {
     namespace Exceptions {
         class ModPlugPlayerException: public std::exception{
-
+        public:
+            ModPlugPlayerException();
+            ModPlugPlayerException(std::string message);
+            const std::string what();
+        private:
+            std::string message;
         };
 
         class FileNotFoundException : public ModPlugPlayerException {
         public:
             FileNotFoundException(const std::filesystem::path &filePath);
-            std::filesystem::path getPath();
             const std::string what();
+            std::filesystem::path getPath();
         private:
             std::filesystem::path filePath;
         };
