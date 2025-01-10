@@ -13,11 +13,14 @@ You should have received a copy of the GNU General Public License along with thi
 #include <QDialog>
 #include <QMainWindow>
 #include <QLabel>
+#include <filesystem>
 
 namespace WindowUtil {
     void setAlwaysOnTop(QMainWindow *window, bool alwaysOnTop);
     void setAlwaysOnTop(QDialog *dialog, bool alwaysOnTop);
     QString shortenTextToWidth(const QFont &font, const size_t &width, const QString &text);
     QString shortenTextToWidth(const QFont &font, const size_t &width, const QString &text, const QString &textPostFix);
+    QString shortenFileNameToWidth(const QFont &font, const size_t &width, const std::filesystem::path &filePath);
+    QString shortenFilePathToWidth(const QFont &font, const size_t &width, const std::filesystem::path &filePath);
     void setFontWeight(QWidget *widget, const QFont::Weight weight);
 };
