@@ -118,7 +118,7 @@ QString WindowUtil::shortenFilePathToWidth(const QFont &font, const size_t &widt
     for(int i = 0; i < size; i++) {
         if(i%2 == 0 && parentPathRight.size() > 0) {
             //remove character from right
-            parentPathRight = parentPathRight.mid(0, parentPathRight.size()-1);
+            parentPathRight = parentPathRight.mid(1, parentPathRight.size()-1);
         }
         else if(parentPathRight.size() > 0) {
             // remove character from left
