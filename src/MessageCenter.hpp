@@ -12,11 +12,9 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma once
 #include <QObject>
 #include <QEvent>
-#include <QPoint>
 #include <QMainWindow>
 #include <APIStructures.hpp>
 #include <PlayListDTOs.hpp>
-#include <mutex>
 
 namespace ModPlugPlayer {
     class MessageCenter : public QObject
