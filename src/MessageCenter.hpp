@@ -44,6 +44,8 @@ namespace ModPlugPlayer {
         void resumeRequested(const PlayListItem playListItem) override;
         void previousRequested() override;
         void nextRequested() override;
+        void rewindRequested() override;
+        void fastForwardRequested() override;
         void volumeChangeRequested(const int volume) override;
         void timeScrubbingRequested(const int position) override;
         void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) override;
@@ -55,6 +57,7 @@ namespace ModPlugPlayer {
         void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort) override;
         void amigaFilterChangeRequested(const AmigaFilter amigaFilter) override;
         void interpolationFilterChangeRequested(const InterpolationFilter interpolationFilter) override;
+        void setupRequested() override;
 
         //Response Signals
         void loaded(const SongFileInfo songFileInfo, bool successfull) override;
