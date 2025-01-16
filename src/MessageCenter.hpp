@@ -56,7 +56,7 @@ namespace ModPlugPlayer {
         void loaded(const PlayListItem playListItem, bool successfull);
         void stopped();
         void stopped(const PlayListItem playListItem);
-        void playingStarted();
+        void playingStarted(SongFileInfo songFileInfo);
         void playingStarted(const PlayListItem playListItem);
         void paused();
         void paused(const PlayListItem playListItem);
