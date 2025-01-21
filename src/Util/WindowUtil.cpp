@@ -86,9 +86,9 @@ void WindowUtil::setFontWeight(QWidget *widget, const QFont::Weight weight) {
 }
 
 QString WindowUtil::shortenFileNameToWidth(const QFont &font, const size_t &width, const std::filesystem::path &filePath) {
-    QString fileNameText = filePath.filename().c_str();
-    QString stem = filePath.stem().c_str();
-    QString extension = filePath.extension().c_str();
+    QString fileNameText = QString::fromStdString(filePath.filename().string());
+    QString stem = QString::fromStdString(filePath.stem().string());
+    QString extension = QString::fromStdString(filePath.extension().string());
     if(extension.size() <= 4)
         fileNameText = WindowUtil::shortenTextToWidth(font, width, stem, extension);
     else
@@ -101,8 +101,8 @@ QString WindowUtil::shortenFilePathToWidth(const QFont &font, const size_t &widt
     QString filePathText = filePath.string().c_str();
     if(fontMetrics.boundingRect(filePathText).width()<=width)
         return filePathText;
-    QString fileNameText = filePath.filename().c_str();
-    QString parentPathText = filePath.parent_path().c_str();
+    QString fileNameText = QString::fromStdString(filePath.filename().string());
+    QString parentPathText = QString::fromStdString(filePath.parent_path().string());
 
     std::filesystem::path output;
     //divide parent path from center
@@ -127,7 +127,7 @@ QString WindowUtil::shortenFilePathToWidth(const QFont &font, const size_t &widt
         currentParentPath = parentPathLeft + "..." + parentPathRight;
         output = std::filesystem::path(currentParentPath.toStdString());
         output = output.append(fileNameText.toStdString());
-        if(fontMetrics.boundingRect(output.c_str()).width() <= width)
+        if(fontMetrics.boundingRect(QString::fromStdString(output.string())).width() <= width)
             return QString::fromStdString(output.string());
     }
 
