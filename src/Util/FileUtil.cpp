@@ -14,12 +14,19 @@ You should have received a copy of the GNU General Public License along with thi
 #include <boost/url/url_view.hpp>
 #include <boost/system.hpp>
 #include <boost/filesystem.hpp>
+#include <algorithm>
 
 std::filesystem::path FileUtil::fileURI2FilePath(const std::string &fileURI) {
-    boost::core::string_view s = fileURI;
-    boost::system::result<boost::url_view> r = boost::urls::parse_uri(s);
-    boost::url_view u = r.value();
-    return u.path();
+    std::string pathString = fileURI;
+    if(!pathString.starts_with("file://")) {
+        return fileURI;
+    }
+    pathString = pathString.substr(7, pathString.size()-7);
+    if(pathString.size() > 2 && pathString[2] == ':') { //Windows
+        pathString = pathString.substr(1, pathString.size() - 1);
+        std::replace(pathString.begin(), pathString.end(), '/', '\\');
+    }
+    return std::filesystem::path(pathString);
 }
 
 std::string FileUtil::filePath2FileURI(const std::filesystem::path &filePath) {
@@ -29,6 +36,9 @@ std::string FileUtil::filePath2FileURI(const std::filesystem::path &filePath) {
 
     url.set_path(pathStr);
     url.set_scheme("file");
-    //return url.buffer();
-    return "file://" + (std::string) url.encoded_path();
+    std::string urlString = url.path();
+    std::replace(urlString.begin(), urlString.end(), '\\', '/');
+    if(!urlString.starts_with('/'))
+        urlString = "/" + urlString;
+    return "file://" + urlString;
 }
