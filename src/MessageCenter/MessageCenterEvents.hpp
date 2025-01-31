@@ -56,6 +56,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void volumeChanged(const int volume);
         void eqStateChanged(const bool activated);
         void dspStateChanged(const bool activated);
+        void outputDeviceChanged(const int outputDeviceIndex);
     };
 
     class ModuleEvents : public QObject {

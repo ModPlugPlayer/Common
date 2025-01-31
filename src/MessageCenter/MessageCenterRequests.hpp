@@ -54,6 +54,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
     signals:
         void eqStateChangeRequested(const bool activated);
         void dspStateChangeRequested(const bool activated);
+        void outputDeviceChangeRequested(const int outputDeviceIndex);
     };
 
     class ModuleRequests : public QObject {
