@@ -47,6 +47,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void titleBarHidingStateChanged(const bool hide);
         void snappingToViewPortStateChanged(const bool snapToViewPort);
         void keepingStayingInViewPortStateChanged(const bool toBeKeptStayingInViewPort);
+        void playListEditorShowingStateChanged(bool isShown);
     };
 
     class SoundEvents : public QObject {
@@ -55,14 +56,24 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void volumeChanged(const int volume);
         void eqStateChanged(const bool activated);
         void dspStateChanged(const bool activated);
+    };
+
+    class ModuleEvents : public QObject {
+        Q_OBJECT
+    signals:
         void amigaFilterChanged(const AmigaFilter amigaFilter);
         void interpolationFilterChanged(const InterpolationFilter interpolationFilter);
+        void activeChannelAmountChanged(const size_t activeChannelAmount);
+        void currentSubSongIndexChanged(const size_t currentSubSongIndex);
+        void patternAmountChanged(const size_t currentPatternAmount);
+        void currentPatternIndexChanged(const size_t currentPatternIndex);
     };
 
     class Events : public QObject {
         Q_OBJECT
     public:
         SongEvents songEvents;
+        ModuleEvents moduleEvents;
         WindowEvents windowEvents;
         SoundEvents soundEvents;
     };

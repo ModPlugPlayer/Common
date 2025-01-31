@@ -48,11 +48,17 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort);
         void setupRequested();
     };
+
     class SoundRequests : public QObject {
         Q_OBJECT
     signals:
         void eqStateChangeRequested(const bool activated);
         void dspStateChangeRequested(const bool activated);
+    };
+
+    class ModuleRequests : public QObject {
+        Q_OBJECT
+    signals:
         void amigaFilterChangeRequested(const AmigaFilter amigaFilter);
         void interpolationFilterChangeRequested(const InterpolationFilter interpolationFilter);
     };
@@ -63,5 +69,6 @@ namespace ModPlugPlayer::MessageCenterRequests {
         SongRequests songRequests;
         WindowRequests windowRequests;
         SoundRequests soundRequests;
+        ModuleRequests moduleRequests;
     };
 }
