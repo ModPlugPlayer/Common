@@ -39,6 +39,18 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode);
     };
 
+    class WindowStandardRequests : public QObject {
+        Q_OBJECT
+    signals:
+        void windowMinimizeRequested();
+        void windowMaximizeRequested();
+        void windowRestoreRequested();
+        void windowHideRequested();
+        void windowShowRequested();
+        void windowOpenRequested();
+        void windowCloseRequested();
+    };
+
     class WindowRequests : public QObject {
         Q_OBJECT
     signals:
@@ -68,8 +80,12 @@ namespace ModPlugPlayer::MessageCenterRequests {
         Q_OBJECT
     public:
         SongRequests songRequests;
-        WindowRequests windowRequests;
-        SoundRequests soundRequests;
         ModuleRequests moduleRequests;
+        SoundRequests soundRequests;
+        WindowRequests windowRequests;
+        WindowStandardRequests playerWindowRequests;
+        WindowStandardRequests playlistWindowRequests;
+        WindowStandardRequests settingsWindowRequests;
+        WindowStandardRequests aboutWindowRequests;
     };
 }

@@ -40,6 +40,18 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void repeatModeChanged(const RepeatMode repeat);
     };
 
+    class WindowStandardEvents : public QObject {
+        Q_OBJECT
+    signals:
+        void windowIsMinimized();
+        void windowIsMaximized();
+        void windowIsRestored();
+        void windowIsHidden();
+        void windowIsShown();
+        void windowIsOpened();
+        void windowIsClosed();
+    };
+
     class WindowEvents : public QObject {
         Q_OBJECT
     signals:
@@ -75,7 +87,11 @@ namespace ModPlugPlayer::MessageCenterEvents {
     public:
         SongEvents songEvents;
         ModuleEvents moduleEvents;
-        WindowEvents windowEvents;
         SoundEvents soundEvents;
+        WindowEvents windowEvents;
+        WindowStandardEvents playerWindowEvents;
+        WindowStandardEvents playlistWindowEvents;
+        WindowStandardEvents settingsWindowEvents;
+        WindowStandardEvents aboutWindowEvents;
     };
 }
