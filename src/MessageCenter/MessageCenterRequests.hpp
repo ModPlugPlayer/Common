@@ -83,9 +83,11 @@ namespace ModPlugPlayer::MessageCenterRequests {
         ModuleRequests moduleRequests;
         SoundRequests soundRequests;
         WindowRequests windowRequests;
-        WindowStandardRequests playerWindowRequests;
-        WindowStandardRequests playlistWindowRequests;
-        WindowStandardRequests settingsWindowRequests;
-        WindowStandardRequests aboutWindowRequests;
+        struct {
+            WindowStandardRequests playerWindowRequests;
+            WindowStandardRequests playlistWindowRequests;
+            WindowStandardRequests settingsWindowRequests;
+            WindowStandardRequests aboutWindowRequests;
+        } windowStandardRequests;
     };
 }

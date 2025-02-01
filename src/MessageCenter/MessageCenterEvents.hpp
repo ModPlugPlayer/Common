@@ -89,9 +89,11 @@ namespace ModPlugPlayer::MessageCenterEvents {
         ModuleEvents moduleEvents;
         SoundEvents soundEvents;
         WindowEvents windowEvents;
-        WindowStandardEvents playerWindowEvents;
-        WindowStandardEvents playlistWindowEvents;
-        WindowStandardEvents settingsWindowEvents;
-        WindowStandardEvents aboutWindowEvents;
+        struct {
+            WindowStandardEvents playerWindowEvents;
+            WindowStandardEvents playlistWindowEvents;
+            WindowStandardEvents settingsWindowEvents;
+            WindowStandardEvents aboutWindowEvents;
+        } windowStandardEvents;
     };
 }
