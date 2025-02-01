@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License along with thi
 namespace VectorUtil {
     template<class T> int findIndexOfElement(const std::vector<T> &list, const T &element);
     template<class T> bool elementExists(const std::vector<T> &list, const T &element);
+    template <typename T> void eraseElementFromVector(std::vector<T> &myVector, const T &value);
 }
 
 template<class T> int VectorUtil::findIndexOfElement(const std::vector<T> &list, const T &element) {
@@ -39,4 +40,9 @@ bool VectorUtil::elementExists(const std::vector<T> &list, const T &element)
     if(std::find(list.begin(), list.end(), element)!=list.end())
         return true;
     return false;
+}
+
+template <typename T>
+void VectorUtil::eraseElementFromVector(std::vector<T> &elements, const T &value){
+    elements.erase(std::remove(elements.begin(), elements.end(), value), elements.end());
 }
