@@ -16,6 +16,16 @@ You should have received a copy of the GNU General Public License along with thi
 #include <QMainWindow>
 
 namespace ModPlugPlayer::EventFilters {
+    class ShowByApplicationActivateEventFilter : public QObject
+    {
+        Q_OBJECT
+    public:
+        ShowByApplicationActivateEventFilter(QMainWindow * mainWindow);
+    protected:
+        bool eventFilter(QObject* object, QEvent* event);
+        QMainWindow *mainWindow;
+    };
+
     class MoveByMouseClickEventFilter : public QObject
     {
         Q_OBJECT

@@ -15,6 +15,20 @@ You should have received a copy of the GNU General Public License along with thi
 #include "MacManager.h"
 #endif
 
+ModPlugPlayer::EventFilters::ShowByApplicationActivateEventFilter::ShowByApplicationActivateEventFilter(QMainWindow * mainWindow){
+    this->mainWindow = mainWindow;
+}
+
+bool ModPlugPlayer::EventFilters::ShowByApplicationActivateEventFilter::eventFilter(QObject* object, QEvent* event) {
+    if (event->type() == QEvent::ApplicationActivate) {
+        if(!mainWindow->isVisible()) {
+            mainWindow->show();
+            return false;
+        }
+    }
+    return false;
+}
+
 ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::MoveByMouseClickEventFilter(QMainWindow *mainWindow) {
 	this->mainWindow = mainWindow;
 }
