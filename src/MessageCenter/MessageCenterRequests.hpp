@@ -31,7 +31,9 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void resumeRequested();
         void resumeRequested(const PlayListItem playListItem);
         void previousRequested();
+        void previousRequested(const PlayListItem playListItem);
         void nextRequested();
+        void nextRequested(const PlayListItem playListItem);
         void rewindRequested();
         void fastForwardRequested();
         void volumeChangeRequested(const int volume);
