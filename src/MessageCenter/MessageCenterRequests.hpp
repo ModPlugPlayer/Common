@@ -78,6 +78,17 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void interpolationFilterChangeRequested(const InterpolationFilter interpolationFilter);
     };
 
+    class SpectrumAnalyzerRequests : public QObject {
+        Q_OBJECT
+    signals:
+        void spectrumAnalyzerWindowFunctionChangeRequested(const WindowFunction windowFunction);
+    };
+
+    class VUMeterRequests : public QObject {
+        Q_OBJECT
+    signals:
+    };
+
     class Requests : public QObject {
         Q_OBJECT
     public:
@@ -85,6 +96,8 @@ namespace ModPlugPlayer::MessageCenterRequests {
         ModuleRequests moduleRequests;
         SoundRequests soundRequests;
         WindowRequests windowRequests;
+        SpectrumAnalyzerRequests spectrumAnalyzerRequests;
+        VUMeterRequests vuMeterRequests;
         struct {
             WindowStandardRequests playerWindowRequests;
             WindowStandardRequests playlistWindowRequests;

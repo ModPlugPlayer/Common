@@ -80,6 +80,26 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void currentSubSongIndexChanged(const size_t currentSubSongIndex);
         void patternAmountChanged(const size_t currentPatternAmount);
         void currentPatternIndexChanged(const size_t currentPatternIndex);
+        void moduleFormatChanged(const std::string songFormat);
+        void channelAmountChanged(const size_t channelAmount);
+        void subSongAmountChanged(const size_t subSongAmount);
+    };
+
+    class SpectrumAnalyzerEvents : public QObject {
+        Q_OBJECT
+    signals:
+        void spectrumAnalyzerWindowFunctionChanged(const WindowFunction windowFunction);
+    };
+
+    class VUMeterEvents : public QObject {
+        Q_OBJECT
+    signals:
+    };
+
+    class SettingsEvents : public QObject {
+        Q_OBJECT
+    signals:
+        void settingsChanged();
     };
 
     class Events : public QObject {
@@ -89,6 +109,9 @@ namespace ModPlugPlayer::MessageCenterEvents {
         ModuleEvents moduleEvents;
         SoundEvents soundEvents;
         WindowEvents windowEvents;
+        SettingsEvents settingsEvents;
+        SpectrumAnalyzerEvents spectrumAnalyzerEvents;
+        VUMeterEvents vuMeterEvents;
         struct {
             WindowStandardEvents playerWindowEvents;
             WindowStandardEvents playlistWindowEvents;
