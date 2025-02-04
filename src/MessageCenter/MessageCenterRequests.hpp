@@ -47,8 +47,6 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void windowMinimizeRequested();
         void windowMaximizeRequested();
         void windowRestoreRequested();
-        void windowHideRequested();
-        void windowShowRequested();
         void windowOpenRequested();
         void windowCloseRequested();
     };
@@ -60,7 +58,6 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void titleBarHidingStateChangeRequested(const bool hide);
         void snappingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort);
         void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort);
-        void setupRequested();
     };
 
     class SoundRequests : public QObject {

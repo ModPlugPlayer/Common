@@ -33,7 +33,8 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void resumed();
         void resumed(const SongFileInfo songFileInfo);
         void resumed(const PlayListItem playListItem);
-        void elapsedTimeChanged(const int seconds);
+        void elapsedTimeChanged(const int elapsedTimeSeconds);
+        void globalRowIndexChanged(const int globalRowIndex);
         void songDurationChanged(const size_t songDurationSeconds);
         void songTitleChanged(const std::string songTitle);
         void timeScrubbed(const int position);
