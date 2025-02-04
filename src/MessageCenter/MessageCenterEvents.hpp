@@ -34,8 +34,8 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void resumed(const SongFileInfo songFileInfo);
         void resumed(const PlayListItem playListItem);
         void elapsedTimeChanged(const int seconds);
-        void trackDurationChanged(const size_t songDurationSeconds);
-        void trackTitleChanged(const QString songTitle);
+        void songDurationChanged(const size_t songDurationSeconds);
+        void songTitleChanged(const std::string songTitle);
         void timeScrubbed(const int position);
         void repeatModeChanged(const RepeatMode repeat);
     };
