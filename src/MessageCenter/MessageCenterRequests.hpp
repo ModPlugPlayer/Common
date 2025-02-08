@@ -15,6 +15,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include <QMainWindow>
 #include <APIStructures.hpp>
 #include <PlayListDTOs.hpp>
+#include <Parameters.hpp>
 
 namespace ModPlugPlayer::MessageCenterRequests {
     class SongRequests : public QObject {
@@ -75,15 +76,21 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void interpolationFilterChangeRequested(const InterpolationFilter interpolationFilter);
     };
 
-    class SpectrumAnalyzerRequests : public QObject {
+    class BarDisplayRequests : public QObject {
         Q_OBJECT
     signals:
-        void spectrumAnalyzerWindowFunctionChangeRequested(const WindowFunction windowFunction);
-    };
-
-    class VUMeterRequests : public QObject {
-        Q_OBJECT
-    signals:
+        void windowFunctionChangeRequested(const WindowFunction windowFunction);
+        void barTypeChangeRequested(const BarType barType);
+        void minimumValueChangeRequested(const int maximumValue);
+        void maximumValueChangeRequested(const int maximumValue);
+        void barLedAmountChangeRequested(const int barLedAmount);
+        void ledHeightRatioChangeRequested(const double ledRatio);
+        void barWidthRatioChangeRequested(const double barRatio);
+        void dimmingRatioChangeRequested(const double dimmingRatio);
+        void dimmedTransparencyRatioChangeRequested(const double dimmedTransparencyRatio);
+        void barAmountChangeRequested(const int barAmount);
+        void gradientChangeRequested(const QGradientStops &gradient);
+        void scaleTypeChangeRequested(const bool isLogarithmicScale);
     };
 
     class Requests : public QObject {
@@ -93,8 +100,8 @@ namespace ModPlugPlayer::MessageCenterRequests {
         ModuleRequests moduleRequests;
         SoundRequests soundRequests;
         WindowRequests windowRequests;
-        SpectrumAnalyzerRequests spectrumAnalyzerRequests;
-        VUMeterRequests vuMeterRequests;
+        BarDisplayRequests spectrumAnalyzerRequests;
+        BarDisplayRequests vuMeterRequests;
         struct {
             WindowStandardRequests playerWindowRequests;
             WindowStandardRequests playlistWindowRequests;

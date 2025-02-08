@@ -15,6 +15,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include <QMainWindow>
 #include <APIStructures.hpp>
 #include <PlayListDTOs.hpp>
+#include <Parameters.hpp>
 
 namespace ModPlugPlayer::MessageCenterEvents {
     class SongEvents : public QObject {
@@ -86,15 +87,21 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void subSongAmountChanged(const size_t subSongAmount);
     };
 
-    class SpectrumAnalyzerEvents : public QObject {
+    class BarDisplayEvents : public QObject {
         Q_OBJECT
     signals:
-        void spectrumAnalyzerWindowFunctionChanged(const WindowFunction windowFunction);
-    };
-
-    class VUMeterEvents : public QObject {
-        Q_OBJECT
-    signals:
+        void windowFunctionChanged(const WindowFunction windowFunction);
+        void barTypeChanged(const BarType barType);
+        void minimumValueChanged(const int maximumValue);
+        void maximumValueChanged(const int maximumValue);
+        void barLedAmountChanged(const int barLedAmount);
+        void ledHeightRatioChanged(const double ledRatio);
+        void barWidthRatioChanged(const double barRatio);
+        void dimmingRatioChanged(const double dimmingRatio);
+        void dimmedTransparencyRatioChanged(const double dimmedTransparencyRatio);
+        void barAmountChanged(const int barAmount);
+        void gradientChanged(const QGradientStops &gradient);
+        void scaleTypeChanged(const bool isLogarithmicScale);
     };
 
     class SettingsEvents : public QObject {
@@ -111,8 +118,8 @@ namespace ModPlugPlayer::MessageCenterEvents {
         SoundEvents soundEvents;
         WindowEvents windowEvents;
         SettingsEvents settingsEvents;
-        SpectrumAnalyzerEvents spectrumAnalyzerEvents;
-        VUMeterEvents vuMeterEvents;
+        BarDisplayEvents spectrumAnalyzerEvents;
+        BarDisplayEvents vuMeterEvents;
         struct {
             WindowStandardEvents playerWindowEvents;
             WindowStandardEvents playlistWindowEvents;
