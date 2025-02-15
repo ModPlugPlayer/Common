@@ -55,6 +55,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void alwaysOnTopStateChangeRequested(const bool alwaysOnTop);
         void titleBarHidingStateChangeRequested(const bool hide);
         void snappingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort);
+        void snappingThresholdChangeRequested(const int snappingThreshold);
         void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort);
         void minimizeRequested();
         void maximizeRequested();

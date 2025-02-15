@@ -55,6 +55,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void alwaysOnTopStateChanged(const bool alwaysOnTop);
         void titleBarHidingStateChanged(const bool hide);
         void snappingToViewPortStateChanged(const bool snapToViewPort);
+        void snappingThresholdChanged(const int snappingThreshold);
         void keepingStayingInViewPortStateChanged(const bool toBeKeptStayingInViewPort);
         void playListEditorShowingStateChanged(bool isShown);
         void minimized();
