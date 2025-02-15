@@ -45,11 +45,6 @@ namespace ModPlugPlayer::MessageCenterEvents {
     class WindowStandardEvents : public QObject {
         Q_OBJECT
     signals:
-        void windowIsMinimized();
-        void windowIsMaximized();
-        void windowIsRestored();
-        void windowIsHidden();
-        void windowIsShown();
         void windowIsOpened();
         void windowIsClosed();
     };
@@ -62,6 +57,11 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void snappingToViewPortStateChanged(const bool snapToViewPort);
         void keepingStayingInViewPortStateChanged(const bool toBeKeptStayingInViewPort);
         void playListEditorShowingStateChanged(bool isShown);
+        void minimized();
+        void maximized();
+        void restored();
+        void hidden();
+        void shown();
     };
 
     class SoundEvents : public QObject {
