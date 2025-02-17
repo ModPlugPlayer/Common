@@ -25,13 +25,13 @@ namespace ModPlugPlayer {
     class MessageCenter : public QObject {
         Q_OBJECT
     public:
-        MessageCenter();
         MessageCenter(MessageCenter const &) = delete;
         void operator =(MessageCenter const &) = delete;
         static MessageCenter& getInstance();
         Requests requests;
         Events events;
     private:
+        MessageCenter();
         static std::mutex mutex;
     };
 }
