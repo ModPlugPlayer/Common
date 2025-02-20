@@ -11,6 +11,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 #include "EventFilters.hpp"
 #include <QMouseEvent>
+#include <QWindow>
 #ifdef Q_OS_MACOS
 #include "MacManager.h"
 #endif
@@ -40,6 +41,8 @@ bool ModPlugPlayer::EventFilters::MoveByMouseClickEventFilter::eventFilter(QObje
             dragPosition = mouse_event->globalPosition().toPoint() - mainWindow->geometry().topLeft();
             lastPosition = dragPosition;
             qDebug()<<"Drag Pos: "<<dragPosition;
+            if(QGuiApplication::platformName() == "wayland")
+                mainWindow->windowHandle()->startSystemMove();
             return false;
         }
     }
