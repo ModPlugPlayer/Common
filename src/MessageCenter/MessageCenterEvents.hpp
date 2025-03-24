@@ -39,7 +39,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void songDurationChanged(const size_t songDurationSeconds);
         void songTitleChanged(const std::string songTitle);
         void timeScrubbed(const int position);
-        void repeatModeChanged(const RepeatMode repeat);
+        void repeatModeChanged(const RepeatMode repeatMode);
     };
 
     class WindowStandardEvents : public QObject {
