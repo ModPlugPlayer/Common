@@ -37,7 +37,6 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void nextRequested(const PlayListItem playListItem);
         void rewindRequested();
         void fastForwardRequested();
-        void volumeChangeRequested(const int volume);
         void timeScrubbingRequested(const int position);
         void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode);
     };
@@ -67,6 +66,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
     class SoundRequests : public QObject {
         Q_OBJECT
     signals:
+        void volumeChangeRequested(const int volume);
         void eqStateChangeRequested(const bool activated);
         void dspStateChangeRequested(const bool activated);
         void outputDeviceChangeRequested(const int outputDeviceIndex);
