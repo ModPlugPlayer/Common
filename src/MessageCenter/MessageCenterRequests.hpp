@@ -44,7 +44,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
         Q_OBJECT
     signals:
         void scrubbingRequested(const unsigned int position);
-        void scrubberUpdateFrequencyChangeRequested(const unsigned int updateFrequency);
+        void scrubberUpdatePeriodChangeRequested(const unsigned int updateFrequency);
     };
 
     class WindowStandardRequests : public QObject {

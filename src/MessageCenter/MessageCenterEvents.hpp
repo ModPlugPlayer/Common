@@ -45,7 +45,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
     class ScrubberEvents : public QObject {
         Q_OBJECT
     signals:
-        void scrubberUpdateFrequencyChanged(const unsigned int updateFrequency);
+        void scrubberUpdatePeriodChanged(const unsigned int updateFrequency);
         void scrubberStepsAmountChanged(const unsigned int stepsAmount);
         void scrubberPositionChanged(const unsigned int positionIndex);
     };
