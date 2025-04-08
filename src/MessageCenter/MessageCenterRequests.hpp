@@ -37,8 +37,14 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void nextRequested(const PlayListItem playListItem);
         void rewindRequested();
         void fastForwardRequested();
-        void timeScrubbingRequested(const int position);
         void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode);
+    };
+
+    class ScrubberRequests : public QObject {
+        Q_OBJECT
+    signals:
+        void scrubbingRequested(const unsigned int position);
+        void scrubberUpdateFrequencyChangeRequested(const unsigned int updateFrequency);
     };
 
     class WindowStandardRequests : public QObject {
@@ -101,6 +107,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
         Q_OBJECT
     public:
         SongRequests songRequests;
+        ScrubberRequests scrubberRequests;
         ModuleRequests moduleRequests;
         SoundRequests soundRequests;
         WindowRequests windowRequests;

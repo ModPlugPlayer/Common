@@ -42,6 +42,14 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void repeatModeChanged(const RepeatMode repeatMode);
     };
 
+    class ScrubberEvents : public QObject {
+        Q_OBJECT
+    signals:
+        void scrubberUpdateFrequencyChanged(const unsigned int updateFrequency);
+        void scrubberStepsAmountChanged(const unsigned int stepsAmount);
+        void scrubberPositionChanged(const unsigned int positionIndex);
+    };
+
     class WindowStandardEvents : public QObject {
         Q_OBJECT
     signals:
@@ -116,6 +124,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         Q_OBJECT
     public:
         SongEvents songEvents;
+        ScrubberEvents scrubberEvents;
         ModuleEvents moduleEvents;
         SoundEvents soundEvents;
         WindowEvents windowEvents;
