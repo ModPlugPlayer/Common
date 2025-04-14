@@ -38,7 +38,6 @@ void WindowUtil::setAlwaysOnTop(QMainWindow *window, bool alwaysOnTop) {
 void WindowUtil::setAlwaysOnTop(QDialog * dialog, bool alwaysOnTop)
 {
     dialog->setWindowFlag(Qt::WindowStaysOnTopHint, alwaysOnTop);
-    dialog->show();
 }
 
 QString WindowUtil::shortenTextToWidth(const QFont &font, const size_t &width, const QString &text) {
