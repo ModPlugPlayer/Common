@@ -80,7 +80,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void eqStateChanged(const bool activated);
         void dspStateChanged(const bool activated);
         void outputDeviceChanged(const int outputDeviceIndex);
-        void soundResolutionChanged(const SampleRate sampleRate, const BitRate bitRate, const ChannelMode channelMode);
+        void soundResolutionChanged(const SoundResolution soundResolution);
     };
 
     class ModuleEvents : public QObject {

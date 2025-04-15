@@ -76,7 +76,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void eqStateChangeRequested(const bool activated);
         void dspStateChangeRequested(const bool activated);
         void outputDeviceChangeRequested(const int outputDeviceIndex);
-        void soundResolutionChangeRequested(const SampleRate sampleRate, const BitRate bitRate, const ChannelMode channelMode);
+        void soundResolutionChangeRequested(const SoundResolution soundResolution);
     };
 
     class ModuleRequests : public QObject {
