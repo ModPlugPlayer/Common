@@ -101,6 +101,8 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void barAmountChangeRequested(const int barAmount);
         void gradientChangeRequested(const QGradientStops &gradient);
         void scaleTypeChangeRequested(const bool isLogarithmicScale);
+        void valueChangeRequested(const double newValue);
+        void valueChangeRequested(const int newValue);
     };
 
     class Requests : public QObject {

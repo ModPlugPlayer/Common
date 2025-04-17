@@ -112,6 +112,8 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void barAmountChanged(const int barAmount);
         void gradientChanged(const QGradientStops &gradient);
         void scaleTypeChanged(const bool isLogarithmicScale);
+        void valueChanged(const double newValue);
+        void valueChanged(const int newValue);
     };
 
     class SettingsEvents : public QObject {
