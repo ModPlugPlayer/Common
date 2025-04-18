@@ -105,6 +105,13 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void valueChangeRequested(const int newValue);
     };
 
+    class SettingsRequests : public QObject {
+        Q_OBJECT
+    signals:
+        void settingsSaveRequested();
+        void settingsSavingImmediatelyModeChangeRequested(bool saveImmediately);
+    };
+
     class Requests : public QObject {
         Q_OBJECT
     public:
@@ -115,6 +122,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
         WindowRequests windowRequests;
         BarDisplayRequests spectrumAnalyzerRequests;
         BarDisplayRequests vuMeterRequests;
+        SettingsRequests settingsRequests;
         struct {
             WindowStandardRequests playerWindowRequests;
             WindowStandardRequests playlistWindowRequests;

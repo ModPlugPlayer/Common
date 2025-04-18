@@ -120,6 +120,8 @@ namespace ModPlugPlayer::MessageCenterEvents {
         Q_OBJECT
     signals:
         void settingsChanged();
+        void settingsSaved();
+        void settingsSavingImmediatelyModeChanged(bool saveImmediately);
     };
 
     class Events : public QObject {
