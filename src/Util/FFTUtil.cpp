@@ -12,5 +12,5 @@ You should have received a copy of the GNU General Public License along with thi
 #include "FFTUtil.hpp"
 
 size_t ModPlugPlayer::FFTUtil::getOutputDataElementAmount(size_t inputDataElementAmount) {
-    return inputDataElementAmount/2;
+    return inputDataElementAmount/2 + 1;
 }
