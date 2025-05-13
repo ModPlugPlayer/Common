@@ -9,8 +9,7 @@ This library is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-#ifndef RGB_HPP
-#define RGB_HPP
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -172,5 +171,3 @@ inline std::string RGB::hex() const{
        << std::setw(6) << (int(red) << 16 | int(green) << 8 | int(blue));
     return ss.str();
 }
-
-#endif //RGB_HPP
