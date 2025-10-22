@@ -1,6 +1,9 @@
 {
   "fill" : {
-    "automatic-gradient" : "extended-srgb:0.00000,0.47843,1.00000,1.00000"
+    "linear-gradient" : [
+      "extended-gray:1.00000,1.00000",
+      "display-p3:0.81089,0.81089,0.81089,1.00000"
+    ]
   },
   "groups" : [
     {
@@ -8,6 +11,7 @@
       "hidden" : false,
       "layers" : [
         {
+          "glass" : false,
           "image-name" : "Film.png",
           "name" : "Film",
           "position" : {
@@ -19,6 +23,7 @@
           }
         },
         {
+          "hidden" : false,
           "image-name" : "Frame.png",
           "name" : "Frame",
           "position" : {
@@ -44,6 +49,8 @@
     }
   ],
   "supported-platforms" : {
-    "squares" : "shared"
+    "squares" : [
+      "macOS"
+    ]
   }
 }
