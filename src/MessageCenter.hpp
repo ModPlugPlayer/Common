@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include <APIStructures.hpp>
 #include <PlayListDTOs.hpp>
 #include <Interfaces/PlayerSignals.hpp>
+#include <mutex>
 
 namespace ModPlugPlayer {
     class MessageCenter : public QObject,
