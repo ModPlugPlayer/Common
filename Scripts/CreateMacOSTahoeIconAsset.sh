@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ICON_PATH="../ui/Icons/ModPlug Player Liquid Glass Icon.icon"
+ICON_PATH="../ui/Icons/ModPlugPlayerLiquidGlassIcon.icon"
 OUTPUT_PATH="../ui/Icons/"
 PLIST_PATH="./assetcatalog_generated_info.plist"
 DEVELOPMENT_REGION="en" # Change if necessary
