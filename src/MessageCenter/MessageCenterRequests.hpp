@@ -16,6 +16,9 @@ You should have received a copy of the GNU General Public License along with thi
 #include <APIStructures.hpp>
 #include <PlayListDTOs.hpp>
 #include <Parameters.hpp>
+#include "AndromedaStructures.hpp"
+
+using namespace AndromedaSignalLab;
 
 namespace ModPlugPlayer::MessageCenterRequests {
     class SongRequests : public QObject {
