@@ -103,7 +103,7 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void dimmedTransparencyRatioChangeRequested(const double dimmedTransparencyRatio);
         void barAmountChangeRequested(const int barAmount);
         void gradientChangeRequested(const QGradientStops &gradient);
-        void scaleTypeChangeRequested(const bool isLogarithmicScale);
+        void amplitudeModeChangeRequested(const AmplitudeMode amplitudeMode);
         void valueChangeRequested(const double newValue);
         void valueChangeRequested(const int newValue);
     };

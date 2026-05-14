@@ -111,7 +111,7 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void dimmedTransparencyRatioChanged(const double dimmedTransparencyRatio);
         void barAmountChanged(const int barAmount);
         void gradientChanged(const QGradientStops &gradient);
-        void scaleTypeChanged(const bool isLogarithmicScale);
+        void amplitudeModeChanged(const AmplitudeMode amplitudeMode);
         void valueChanged(const double newValue);
         void valueChanged(const int newValue);
     };
