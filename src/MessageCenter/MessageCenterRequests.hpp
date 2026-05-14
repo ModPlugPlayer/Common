@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include <PlayListDTOs.hpp>
 #include <Parameters.hpp>
 #include "AndromedaStructures.hpp"
+#include "TypeDefinitions.hpp"
 
 using namespace AndromedaSignalLab;
 
@@ -103,6 +104,9 @@ namespace ModPlugPlayer::MessageCenterRequests {
         void dimmedTransparencyRatioChangeRequested(const double dimmedTransparencyRatio);
         void barAmountChangeRequested(const int barAmount);
         void gradientChangeRequested(const QGradientStops &gradient);
+        void raisingMotionPropertiesChangeRequested(const MotionProperties<double> raisingMotionProperties);
+        void fallingMotionPropertiesChangeRequested(const MotionProperties<double> fallingMotionProperties);
+        void peakFallingMotionPropertiesChangeRequested(const MotionProperties<double> peakFallingMotionProperties);
         void amplitudeModeChangeRequested(const AmplitudeMode amplitudeMode);
         void valueChangeRequested(const double newValue);
         void valueChangeRequested(const int newValue);

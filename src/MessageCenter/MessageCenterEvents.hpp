@@ -111,6 +111,9 @@ namespace ModPlugPlayer::MessageCenterEvents {
         void dimmedTransparencyRatioChanged(const double dimmedTransparencyRatio);
         void barAmountChanged(const int barAmount);
         void gradientChanged(const QGradientStops &gradient);
+        void raisingMotionPropertiesChanged(const MotionProperties<double> raisingMotionProperties);
+        void fallingMotionPropertiesChanged(const MotionProperties<double> fallingMotionProperties);
+        void peakFallingMotionPropertiesChanged(const MotionProperties<double> peakFallingMotionProperties);
         void amplitudeModeChanged(const AmplitudeMode amplitudeMode);
         void valueChanged(const double newValue);
         void valueChanged(const int newValue);
